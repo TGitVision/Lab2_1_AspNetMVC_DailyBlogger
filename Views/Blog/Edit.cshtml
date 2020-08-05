@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit Post";
+    Layout = "_Layout";
 }
 
 <h2>Edit</h2>
@@ -22,7 +23,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="content" class="control-label"></label>
-                <input asp-for="content" class="form-control" />
+                @Html.TextAreaFor(m => m.content, 10, 10, new { @class = "form-control"})
+                @*<input asp-for="content" class="form-control" />*@
                 <span asp-validation-for="content" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -32,7 +34,7 @@
             </div>
             @Html.HiddenFor(m => m.id) 
             <div class="form-group">
-                <input type="submit" value="Update Blog" class="btn btn-default" />
+                <input type="submit" value="Update Post" class="btn btn-default" />
             </div>
         </form>
 
@@ -40,14 +42,13 @@
 
 </div>
 
-@*<!DOCTYPE html>
+<div>
+    <a asp-action="List">Back to List</a>
+    @*<a asp-action="Index">Back to List</a>*@ @*Error "Index" in Courseware. Corrected link above with List...added by th 08042020*@
+</div>
 
-    <html>
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title>New</title>
-    </head>
-    <body>
+@section Scripts {
 
-    </body>
-    </html>*@
+@{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}
