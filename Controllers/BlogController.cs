@@ -20,7 +20,7 @@ namespace Lab2_1_AspNetMVC_DailyBlogger.Controllers
 
         public IActionResult List()
         {
-            IEnumerable<BlogPost> posts = _context.blogPost.ToList<BlogPost>();
+            List<BlogPost> posts = _context.blogPost.ToList<BlogPost>();
             return View(posts);
         }
 
